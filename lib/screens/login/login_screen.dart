@@ -52,6 +52,36 @@ class _LoginScreenState extends State<LoginScreen> {
                     const SizedBox(
                       height: 27,
                     ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        DropdownButton<String>(
+                          value: selectLang,
+                          icon: const Icon(Icons.arrow_downward),
+                          elevation: 16,
+                          style: const TextStyle(
+                            color: Color(0xffc2d1d1),
+                            fontSize: 15,
+                          ),
+                          underline: Container(
+                            height: 2,
+                            color: const Color(0xffc0c0c0),
+                          ),
+                          onChanged: (String? value) {
+                            setState(() {
+                              selectLang = value!;
+                            });
+                          },
+                          items: lagnList
+                              .map<DropdownMenuItem<String>>((String value) {
+                            return DropdownMenuItem<String>(
+                              value: value,
+                              child: Text(value),
+                            );
+                          }).toList(),
+                        ),
+                      ],
+                    ),
                     Container(
                       child: Image.asset("assets/images/login_future.png"),
                     ),
@@ -141,11 +171,12 @@ class _LoginScreenState extends State<LoginScreen> {
                                 height: 20,
                               ),
                               const Text(
-                                  '※ 본 시스템은 허가된 사용자만 이용할 수 있습니다.\n부당한 방법으로 시스템에 접속하거나 정보를 삭제, 변경, 유출하는 사용자는 관련 법령에 따라 처벌 받을 수 있으니 주의하시기 바랍니다.',
-                                  style: TextStyle(
-                                    color: Color(0xff9a9a9a),
-                                    fontSize: 12,
-                                  )),
+                                '※ 본 시스템은 허가된 사용자만 이용할 수 있습니다.\n부당한 방법으로 시스템에 접속하거나 정보를 삭제, 변경, 유출하는 사용자는 관련 법령에 따라 처벌 받을 수 있으니 주의하시기 바랍니다.',
+                                style: TextStyle(
+                                  color: Color(0xff9a9a9a),
+                                  fontSize: 12,
+                                ),
+                              ),
                             ],
                           )
                         ],
